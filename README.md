@@ -15,8 +15,7 @@ docker compose up
 
 ## To Do
 
-- Store last clicked date in a database
+- Store last clicked date in a database. Try out redis?
 - Make it look nicer
     - Center components
-    - Make button pretty
     - Animations?
