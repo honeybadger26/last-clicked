@@ -11,6 +11,5 @@ FROM development AS staging
 CMD [ "npm", "run", "lint" ]
 
 FROM base AS production
-RUN npm ci
-RUN npm run build
+RUN npm ci && npm run build
 CMD [ "npm", "start" ]

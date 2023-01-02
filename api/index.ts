@@ -6,7 +6,7 @@ const app = express();
 app.use(cors({ origin: "*", methods: ["GET", "POST"] }));
 
 app.use((req: Request, _res: Response, next: () => void) => {
-    console.log(new Date(), req.method, req.originalUrl);
+    console.log(req.method, req.originalUrl);
     next();
 });
 
