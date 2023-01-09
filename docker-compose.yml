@@ -1,22 +1,26 @@
 version: "3.9"
-
 services:
   api:
     build:
-      context: ./api
-      target: development
+      context: api
+      dockerfile: ../Dockerfile
     ports:
       - 3001:3001
     volumes:
       - ./api:/app
       - /app/node_modules
-
   frontend:
     build:
-      context: ./frontend
-      target: development
+      context: frontend
+      dockerfile: ../Dockerfile
     ports:
       - 3000:3000
     volumes:
       - ./frontend:/app
       - /app/node_modules
+  db:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - /data
