@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const API = process.env.api;
 
@@ -7,13 +7,13 @@ export async function getServerSideProps() {
   const data = await res.json();
 
   return { props: { initialDate: data.date } };
-}
+};
 
 export default function({ initialDate }) {
   const [date, setDate] = useState(initialDate);
   
   async function handleClick() {
-    const res = await fetch(`${API.client}/set`, { method: "POST" });
+    const res = await fetch(`${API.client}/set`, { method: 'POST' });
     const data = await res.json();
 
     setDate(data.date);
@@ -30,5 +30,5 @@ export default function({ initialDate }) {
       </button>
     </div>
   );
-}
+};
   
