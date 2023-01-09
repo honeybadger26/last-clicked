@@ -14,17 +14,15 @@ app.use((req: Request, _res: Response, next: () => void) => {
     next();
 });
 
-app.get('/get', async (_req: Request, res: Response) => {
+app.get('/get', async (req: Request, res: Response) => {
     const date = await redis.get(LAST_CLICKED);
-
-    if (date) res.json({ date });
-    else res.json({ date: null });
+    res.json({ date });
 });
 
 app.post('/set', async (_req: Request, res: Response) => {
     const date = new Date();
     await redis.set(LAST_CLICKED, date.toISOString());
-    res.json({ date });
+    res.end();
 });
 
 const port = 3001;

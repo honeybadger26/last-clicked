@@ -1,33 +1,45 @@
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 
-const API = process.env.api;
+import Button from '../components/Button';
+
+const LastClickedText = dynamic(
+  () => import('../components/LastClickedText'),
+  { ssr: false }
+);
+
+// TODO : Move api logic to /api folder
+const API = process.browser ? process.env.api.client : process.env.api.server;
 
 export async function getServerSideProps() {
-  const res = await fetch(`${API.server}/get`);
+  const res = await fetch(`${API}/get`);
   const data = await res.json();
-
   return { props: { initialDate: data.date } };
 };
 
+
 export default function({ initialDate }) {
   const [date, setDate] = useState(initialDate);
+  const [loading, setLoading] = useState(false);
   
   async function handleClick() {
-    const res = await fetch(`${API.client}/set`, { method: 'POST' });
+    setLoading(true);
+
+    await fetch(`${API}/set`, { method: 'POST' });
+
+    const res = await fetch(`${API}/get`);
     const data = await res.json();
 
     setDate(data.date);
+    setLoading(false);
   }
-  
+
   return (
-    <div className="p-5">
-      { date && <p className="pb-3 font-mono">Last clicked: {date}</p> }
-      <button
-        className="text-3xl p-3 font-sans rounded-lg text-slate-50 bg-blue-600 hover:bg-blue-500 active:bg-blue-400"
-        onClick={handleClick}
-      >
-        You won't click me. You're too scared
-      </button>
+    <div className="p-5 flex h-screen">
+      <div className="m-auto text-center">
+        <LastClickedText loading={loading} date={date} />
+        <Button loading={loading} onClick={handleClick} />
+      </div>
     </div>
   );
 };
