@@ -8,7 +8,6 @@ const LastClickedText = dynamic(
   { ssr: false }
 );
 
-// TODO : Move api logic to /api folder
 const API = process.browser ? process.env.api.client : process.env.api.server;
 
 export async function getServerSideProps() {
@@ -18,7 +17,7 @@ export async function getServerSideProps() {
 };
 
 
-export default function({ initialDate }) {
+export default function HomePage({ initialDate }) {
   const [date, setDate] = useState(initialDate);
   const [loading, setLoading] = useState(false);
   

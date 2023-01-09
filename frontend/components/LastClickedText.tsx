@@ -1,6 +1,6 @@
 // This component is non-SSR. Intl only works client side.
 
-export default function({ loading, date }) {
+export default function LastClickedText({ loading, date }) {
   const classes = [
     'mb-3',
     'font-mono',
