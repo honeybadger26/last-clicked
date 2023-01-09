@@ -12,10 +12,3 @@ button, do it.
 docker compose up
 ```
 3. Go to http://localhost:3000
-
-## To Do
-
-- Store last clicked date in a database. Try out redis?
-- Make it look nicer
-    - Center components
-    - Animations?
