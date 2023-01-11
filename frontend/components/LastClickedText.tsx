@@ -1,6 +1,13 @@
 // This component is non-SSR. Intl only works client side.
 
-export default function LastClickedText({ loading, date }) {
+interface LastClickedTextProps {
+  loading: boolean,
+  date: null | string,
+};
+
+export default function LastClickedText(
+  { loading = false, date }: LastClickedTextProps
+) {
   const classes = [
     'mb-3',
     'font-mono',

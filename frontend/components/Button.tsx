@@ -1,4 +1,9 @@
-export default function Button({ loading, onClick}) {
+interface ButtonProps {
+  loading: boolean,
+  onClick: () => void,
+};
+
+export default function Button({loading = false, onClick }: ButtonProps) {
   const classes = [
     'mb-auto',
     'p-4',
