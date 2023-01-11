@@ -12,3 +12,14 @@ button, do it.
 docker compose up
 ```
 3. Go to http://localhost:3000
+
+
+## Uses
+
+- React
+- Next.js
+- Tailwind CSS
+- Node.js
+- TypeScript
+- Redis
+- Docker
