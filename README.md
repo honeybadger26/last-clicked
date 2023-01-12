@@ -9,6 +9,8 @@ button, do it.
 1. Install Docker and Docker Compose
 2. Run
 ```
+docker compose run api npm install
+docker compose run frontend npm install
 docker compose up
 ```
 3. Go to http://localhost:3000

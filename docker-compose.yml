@@ -1,26 +1,26 @@
 version: "3.9"
+
+x-node-app: &node-app
+  image: node:alpine
+  working_dir: /app
+  command: npm run dev
+
 services:
   api:
-    build:
-      context: api
-      dockerfile: ../Dockerfile
+    <<: *node-app
     ports:
-      - 3001:3001
+      - "3001:3001"
     volumes:
       - ./api:/app
-      - /app/node_modules
   frontend:
-    build:
-      context: frontend
-      dockerfile: ../Dockerfile
+    <<: *node-app
     ports:
-      - 3000:3000
+      - "3000:3000"
     volumes:
       - ./frontend:/app
-      - /app/node_modules
   db:
     image: redis:alpine
     ports:
-      - 6379:6379
+      - "6379:6379"
     volumes:
       - /data
