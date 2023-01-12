@@ -3,7 +3,7 @@ interface ButtonProps {
   onClick: () => void,
 };
 
-export default function Button({loading = false, onClick }: ButtonProps) {
+const Button = ({loading = false, onClick }: ButtonProps) => {
   const classes = [
     'mb-auto',
     'p-4',
@@ -29,3 +29,5 @@ export default function Button({loading = false, onClick }: ButtonProps) {
     </button>
   );
 };
+
+export default Button;

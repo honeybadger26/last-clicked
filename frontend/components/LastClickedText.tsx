@@ -5,9 +5,7 @@ interface LastClickedTextProps {
   date: null | string,
 };
 
-export default function LastClickedText(
-  { loading = false, date }: LastClickedTextProps
-) {
+const LastClickedText = ({ loading = false, date }: LastClickedTextProps) => {
   const classes = [
     'mb-3',
     'font-mono',
@@ -42,3 +40,5 @@ export default function LastClickedText(
     </p>
   );
 };
+
+export default LastClickedText;

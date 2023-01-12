@@ -16,8 +16,7 @@ export async function getServerSideProps() {
   return { props: { initialDate: data.date } };
 };
 
-
-export default function HomePage({ initialDate }: { initialDate: null | string}) {
+const HomePage = ({ initialDate }: { initialDate: null | string}) => {
   const [date, setDate] = useState(initialDate);
   const [loading, setLoading] = useState(false);
   
@@ -43,3 +42,4 @@ export default function HomePage({ initialDate }: { initialDate: null | string})
   );
 };
   
+export default HomePage;
