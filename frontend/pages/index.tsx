@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
+import { useState } from "react";
+import dynamic from "next/dynamic";
 
-import Button from '../components/Button';
+import Button from "../components/Button";
 
-const LastClickedText = dynamic(
-  () => import('../components/LastClickedText'),
+const Text = dynamic(
+  () => import("../components/Text"),
   { ssr: false }
 );
 
@@ -16,26 +16,26 @@ export async function getServerSideProps() {
   return { props: { initialDate: data.date } };
 };
 
-const HomePage = ({ initialDate }: { initialDate: null | string}) => {
+const HomePage = ({ initialDate }: { initialDate: null | string }) => {
   const [date, setDate] = useState(initialDate);
   const [loading, setLoading] = useState(false);
   
-  async function handleClick() {
+  const handleClick = async () => {
     setLoading(true);
 
-    await fetch(`${API}/set`, { method: 'POST' });
+    await fetch(`${API}/set`, { method: "POST" });
 
     const res = await fetch(`${API}/get`);
     const data = await res.json();
 
     setDate(data.date);
     setLoading(false);
-  }
+  };
 
   return (
     <div className="p-5 flex h-screen">
       <div className="m-auto text-center">
-        <LastClickedText loading={loading} date={date} />
+        <Text loading={loading} date={date} />
         <Button loading={loading} onClick={handleClick} />
       </div>
     </div>
