@@ -20,7 +20,5 @@ services:
       - ./frontend:/app
   db:
     image: redis:alpine
-    ports:
-      - "6379:6379"
     volumes:
       - /data
